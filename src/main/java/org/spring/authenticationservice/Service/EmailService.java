@@ -14,8 +14,8 @@ public class EmailService {
     @Autowired
     RestTemplate restTemplate;
 
-    @Value("${EMAIL_SERVICE_NAME}")
-    private String emailServiceName;
+
+    private String emailServiceName = "localhost";
 
     public String sendEmail(String emailType, Map<String, String> emailPayload) {
         System.out.println(emailServiceName);

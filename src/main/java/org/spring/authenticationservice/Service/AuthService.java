@@ -60,19 +60,6 @@ public class AuthService {
         String activationToken = jwtService.generateActivationToken(user.getEmail());
         userRepository.save(user);
 
-        Map<String, String> emailBody = Map.of(
-                "to", user.getEmail(),
-                "name", user.getEmail(),  // If user has a getName() method, replace email with user.getName()
-                "activationLink", "localhost:8080/activate?token=" + activationToken
-        );
-
-        try{
-           String mailResponse = emailService.sendEmail("activation",emailBody);
-           System.out.println(mailResponse);
-       }
-       catch (Exception e) {
-           throw new Exception("Email could not be sent");
-       }
     }
 
     public Boolean findUserByUsername(String email){
